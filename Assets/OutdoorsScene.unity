@@ -408,6 +408,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &449994982 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6000407479487422213, guid: 9e37af35ef119c74cb4b092afe366eff, type: 3}
+  m_PrefabInstance: {fileID: 787775015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &700062817 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3432401550182100168, guid: 79811309ad6a7ed40abba312f0d78a2d, type: 3}
+  m_PrefabInstance: {fileID: 2118246545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &787775015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,7 +489,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e37af35ef119c74cb4b092afe366eff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1912198098}
   m_SourcePrefab: {fileID: 100100000, guid: 9e37af35ef119c74cb4b092afe366eff, type: 3}
 --- !u!1001 &900038065
 PrefabInstance:
@@ -813,6 +826,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17e62e149772bdf4489cdf7d1ae57238, type: 3}
+--- !u!4 &1071588885 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3432401550182100168, guid: 9e37af35ef119c74cb4b092afe366eff, type: 3}
+  m_PrefabInstance: {fileID: 787775015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1089812204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 79811309ad6a7ed40abba312f0d78a2d, type: 3}
+  m_PrefabInstance: {fileID: 2118246545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1089812205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089812204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afca1d06056274222ab1586bd6b11d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlBrazosYoshi
+  brazoIzquierdo: {fileID: 1883193673}
+  brazoDerecho: {fileID: 700062817}
+  rotacionArriba: -60
+  velocidad: 5
 --- !u!1001 &1613214703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1118,6 +1157,32 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!4 &1883193673 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6000407479487422213, guid: 79811309ad6a7ed40abba312f0d78a2d, type: 3}
+  m_PrefabInstance: {fileID: 2118246545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1912198097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e37af35ef119c74cb4b092afe366eff, type: 3}
+  m_PrefabInstance: {fileID: 787775015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1912198098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912198097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499f3b376c0284cea8eee9da9b323466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlBrazosMario
+  brazoIzquierdo: {fileID: 449994982}
+  brazoDerecho: {fileID: 1071588885}
+  rotacionArriba: -60
+  velocidad: 5
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
@@ -1238,7 +1303,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 79811309ad6a7ed40abba312f0d78a2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1089812205}
   m_SourcePrefab: {fileID: 100100000, guid: 79811309ad6a7ed40abba312f0d78a2d, type: 3}
 --- !u!1001 &2145066512
 PrefabInstance:
