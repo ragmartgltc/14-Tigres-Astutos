@@ -19,7 +19,7 @@ public class ControlBrazosYoshi : MonoBehaviour
 
     void Update()
     {
-        // Brazo izquierdo (tecla Q)
+        // IZQUIERDA (Q)
         if (Input.GetKey(KeyCode.Q))
         {
             brazoIzquierdo.localRotation = Quaternion.Slerp(
@@ -27,6 +27,13 @@ public class ControlBrazosYoshi : MonoBehaviour
                 rotacionInicialIzq * Quaternion.Euler(rotacionArriba, 0, 0),
                 Time.deltaTime * velocidad
             );
+
+            if (ShyGuyController.manoActual != true)
+            {
+                ShyGuyController.juegoActivo = false;
+            }
+
+            ShyGuyController.esperandoRespuesta = false;
         }
         else
         {
@@ -37,7 +44,7 @@ public class ControlBrazosYoshi : MonoBehaviour
             );
         }
 
-        // Brazo derecho (tecla E)
+        // DERECHA (E)
         if (Input.GetKey(KeyCode.E))
         {
             brazoDerecho.localRotation = Quaternion.Slerp(
@@ -45,6 +52,13 @@ public class ControlBrazosYoshi : MonoBehaviour
                 rotacionInicialDer * Quaternion.Euler(rotacionArriba, 0, 0),
                 Time.deltaTime * velocidad
             );
+
+            if (ShyGuyController.manoActual != false)
+            {
+                ShyGuyController.juegoActivo = false;
+            }
+
+            ShyGuyController.esperandoRespuesta = false;
         }
         else
         {

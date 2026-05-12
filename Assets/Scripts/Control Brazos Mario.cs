@@ -19,7 +19,7 @@ public class ControlBrazosMario : MonoBehaviour
 
     void Update()
     {
-        // Brazo izquierdo (tecla I)
+        // IZQUIERDA (I)
         if (Input.GetKey(KeyCode.I))
         {
             brazoIzquierdo.localRotation = Quaternion.Slerp(
@@ -27,6 +27,15 @@ public class ControlBrazosMario : MonoBehaviour
                 rotacionInicialIzq * Quaternion.Euler(rotacionArriba, 0, 0),
                 Time.deltaTime * velocidad
             );
+
+            // ❌ FALLO si Shy Guy no estaba en izquierda
+            if (ShyGuyController.manoActual != true)
+            {
+                ShyGuyController.juegoActivo = false;
+            }
+
+            // ✔️ responde ronda
+            ShyGuyController.esperandoRespuesta = false;
         }
         else
         {
@@ -37,7 +46,7 @@ public class ControlBrazosMario : MonoBehaviour
             );
         }
 
-        // Brazo derecho (tecla P)
+        // DERECHA (P)
         if (Input.GetKey(KeyCode.P))
         {
             brazoDerecho.localRotation = Quaternion.Slerp(
@@ -45,6 +54,15 @@ public class ControlBrazosMario : MonoBehaviour
                 rotacionInicialDer * Quaternion.Euler(rotacionArriba, 0, 0),
                 Time.deltaTime * velocidad
             );
+
+            // ❌ FALLO si Shy Guy no estaba en derecha
+            if (ShyGuyController.manoActual != false)
+            {
+                ShyGuyController.juegoActivo = false;
+            }
+
+            // ✔️ responde ronda
+            ShyGuyController.esperandoRespuesta = false;
         }
         else
         {
