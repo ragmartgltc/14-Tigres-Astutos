@@ -9,7 +9,7 @@ El videojuego se enfoca en seguir los patrones por parte del personaje central S
 - rondas se renuevan y son infinitas hasta que uno de los 2 falle
 - Cuando 1 de los 2 jugadores levante el brazo incorrecto, el juego se detiene automaticamente
 
-#HUD
+# HUD
 
 - Elementos visuales para Jugar, opciones de audio y salir
 - Sonidos ambientales
