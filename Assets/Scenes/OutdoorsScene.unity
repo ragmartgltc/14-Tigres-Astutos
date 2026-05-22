@@ -914,12 +914,12 @@ MonoBehaviour:
   estadoText: {fileID: 2006107098}
   puntajeText: {fileID: 482799671}
   audioSource: {fileID: 792710051}
-  sonidoCuenta: {fileID: 0}
-  sonidoGo: {fileID: 0}
-  sonidoLevantarBrazo: {fileID: 0}
+  sonidoCuenta: {fileID: 8300000, guid: e55e06e698583f34ca039c12ac18a869, type: 3}
+  sonidoGo: {fileID: 8300000, guid: dd829af91e7a61b4e921fab79e813d01, type: 3}
+  sonidoLevantarBrazo: {fileID: 8300000, guid: 672eb0daa1ece1c449b5742009219afc, type: 3}
   sonidoCorrecto: {fileID: 0}
   sonidoIncorrecto: {fileID: 0}
-  sonidoGameOver: {fileID: 0}
+  sonidoGameOver: {fileID: 8300000, guid: 4d7f417a6fad45744b198fd9de07678a, type: 3}
   rotacionArriba: -60
   tiempoEntreRondas: 3
   tiempoMostrarMano: 0.8
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   audioSource: {fileID: 903416907}
   sonidoLevantarBrazo: {fileID: 8300000, guid: 672eb0daa1ece1c449b5742009219afc, type: 3}
   sonidoCorrecto: {fileID: 8300000, guid: f1ffcc7d220ef9d4998ee7d4711aba5d, type: 3}
-  sonidoIncorrecto: {fileID: 8300000, guid: 4d7f417a6fad45744b198fd9de07678a, type: 3}
+  sonidoIncorrecto: {fileID: 0}
 --- !u!114 &903416904
 MonoBehaviour:
   m_ObjectHideFlags: 0
