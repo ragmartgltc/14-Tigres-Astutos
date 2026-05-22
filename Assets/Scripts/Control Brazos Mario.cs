@@ -2,75 +2,110 @@ using UnityEngine;
 
 public class ControlBrazosMario : MonoBehaviour
 {
+    [Header("Referencias")]
+    public ShyGuyController shyGuy;
+
+    [Header("Brazos")]
     public Transform brazoIzquierdo;
     public Transform brazoDerecho;
 
+    [Header("Movimiento")]
     public float rotacionArriba = -60f;
     public float velocidad = 5f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+
+    public AudioClip sonidoLevantarBrazo;
+    public AudioClip sonidoCorrecto;
+    public AudioClip sonidoIncorrecto;
 
     private Quaternion rotacionInicialIzq;
     private Quaternion rotacionInicialDer;
 
     void Start()
     {
+        if (shyGuy == null)
+        {
+            shyGuy = FindObjectOfType<ShyGuyController>();
+        }
+
         rotacionInicialIzq = brazoIzquierdo.localRotation;
         rotacionInicialDer = brazoDerecho.localRotation;
     }
 
     void Update()
     {
-        // IZQUIERDA (I)
-        if (Input.GetKey(KeyCode.I))
-        {
-            brazoIzquierdo.localRotation = Quaternion.Slerp(
-                brazoIzquierdo.localRotation,
-                rotacionInicialIzq * Quaternion.Euler(rotacionArriba, 0, 0),
-                Time.deltaTime * velocidad
-            );
+        if (!ShyGuyController.puedeJugar)
+            return;
 
-            // ❌ FALLO si Shy Guy no estaba en izquierda
-            if (ShyGuyController.manoActual != true)
+        // ==========================
+        // TECLA I (IZQUIERDA)
+        // ==========================
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            audioSource.PlayOneShot(sonidoLevantarBrazo);
+
+            brazoIzquierdo.localRotation =
+                rotacionInicialIzq *
+                Quaternion.Euler(rotacionArriba, 0, 0);
+
+            if (ShyGuyController.manoActual)
             {
-                ShyGuyController.juegoActivo = false;
+                audioSource.PlayOneShot(sonidoCorrecto);
+
+                if (shyGuy != null)
+                    shyGuy.RespuestaCorrecta();
             }
-
-            // ✔️ responde ronda
-            ShyGuyController.esperandoRespuesta = false;
-        }
-        else
-        {
-            brazoIzquierdo.localRotation = Quaternion.Slerp(
-                brazoIzquierdo.localRotation,
-                rotacionInicialIzq,
-                Time.deltaTime * velocidad
-            );
-        }
-
-        // DERECHA (P)
-        if (Input.GetKey(KeyCode.P))
-        {
-            brazoDerecho.localRotation = Quaternion.Slerp(
-                brazoDerecho.localRotation,
-                rotacionInicialDer * Quaternion.Euler(rotacionArriba, 0, 0),
-                Time.deltaTime * velocidad
-            );
-
-            // ❌ FALLO si Shy Guy no estaba en derecha
-            if (ShyGuyController.manoActual != false)
+            else
             {
-                ShyGuyController.juegoActivo = false;
-            }
+                audioSource.PlayOneShot(sonidoIncorrecto);
 
-            // ✔️ responde ronda
-            ShyGuyController.esperandoRespuesta = false;
+                if (shyGuy != null)
+                    shyGuy.RespuestaIncorrecta();
+            }
         }
-        else
+
+        // ==========================
+        // TECLA P (DERECHA)
+        // ==========================
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            brazoDerecho.localRotation = Quaternion.Slerp(
-                brazoDerecho.localRotation,
-                rotacionInicialDer,
-                Time.deltaTime * velocidad
-            );
+            audioSource.PlayOneShot(sonidoLevantarBrazo);
+
+            brazoDerecho.localRotation =
+                rotacionInicialDer *
+                Quaternion.Euler(rotacionArriba, 0, 0);
+
+            if (!ShyGuyController.manoActual)
+            {
+                audioSource.PlayOneShot(sonidoCorrecto);
+
+                if (shyGuy != null)
+                    shyGuy.RespuestaCorrecta();
+            }
+            else
+            {
+                audioSource.PlayOneShot(sonidoIncorrecto);
+
+                if (shyGuy != null)
+                    shyGuy.RespuestaIncorrecta();
+            }
         }
+
+        // ==========================
+        // VOLVER A POSICIÓN INICIAL
+        // ==========================
+        brazoIzquierdo.localRotation = Quaternion.Slerp(
+            brazoIzquierdo.localRotation,
+            rotacionInicialIzq,
+            Time.deltaTime * velocidad
+        );
+
+        brazoDerecho.localRotation = Quaternion.Slerp(
+            brazoDerecho.localRotation,
+            rotacionInicialDer,
+            Time.deltaTime * velocidad
+        );
     }
 }
